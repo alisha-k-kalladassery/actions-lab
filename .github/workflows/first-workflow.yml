@@ -12,8 +12,12 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
+      - name: Get repository name and date
+        run: |
+          echo "REPO_NAME=${{ github.repository  }}" >> $GITHUB_ENV
+          echo "CURRENT_DATE=$(date + '%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
       - name: Print ${GREETING_MESSAGE}
-        run: echo "${GREETING_MESSAGE}"
+        run: echo "${GREETING_MESSAGE} from ${{ env.REPO_NAME }} at ${{ env.CURRENT_DATE }}"
   say-goodbye:
     needs: say-hello
     runs-on: ubuntu-latest
