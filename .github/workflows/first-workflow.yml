@@ -33,7 +33,7 @@ jobs:
   say-goodbye:
     needs: say-hello
     runs-on: ubuntu-latest
-    if: success()
+    if: ${{ always() }}
     steps:
       - name: Get repository name and date
         run: |
