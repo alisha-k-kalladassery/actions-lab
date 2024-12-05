@@ -19,6 +19,7 @@ jobs:
         with:
           file_or_dir: .
   say-hello:
+    if: ${{ always() }}
     needs: lint-yaml
     runs-on: ubuntu-latest
     steps:
